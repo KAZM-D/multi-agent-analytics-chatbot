@@ -1,0 +1,33 @@
+# Dashboard Chatbot — Multi-Agent NL-to-SQL Analytics Assistant
+
+A conversational analytics assistant built for a hackathon, where the challenge was to design a chatbot for a video-editing platform that helps users understand their platform usage data through natural language — no SQL knowledge required.
+
+Users can ask questions about video platform metrics (uploads, channels, users, engagement) and get answers backed by real SQL queries, auto-generated visualizations, and business-context recommendations.
+
+Built as a 12-stage multi-agent pipeline powered by LLaMA-3.3-70B, deployed via a FastAPI backend with a custom interactive chat UI.
+
+## Features
+
+- **Multi-agent NL-to-SQL pipeline** — a 12-stage architecture that translates natural language questions into SQL queries, tested across 10 structured datasets
+- **Context-resolution agent** — rewrites ambiguous follow-up questions using a rolling memory of the last 6 conversation turns, so users can ask natural follow-ups without repeating context
+- **Self-healing SQL layer** — an LLM-based debugger that automatically detects and corrects failed SQL queries before returning results
+- **Plot-planning agent** — autonomously selects from 4 chart types to best visualize the answer, rendered as dynamic inline charts in the chat
+- **15-KPI business framework** — benchmark-aware layer that contextualizes raw answers into business-relevant recommendations, tailored to video platform metrics
+- **FastAPI backend** with a custom interactive chat interface
+
+## Example Interactions
+
+**Q: "What is the total upload count for each channel?"**
+> The total upload count for each channel is shown in the bar chart, with Channel A having the highest upload count of 1470.0 and Channel R having the lowest upload count of 3.0. The chart provides a visual representation of the total upload count for each of the 18 channels, allowing for easy comparison of upload activity across channels.
+
+The assistant also proactively suggests relevant follow-up questions after each answer (see `outputs/` for full screenshots).
+
+## Tech Stack
+
+- **LLM**: LLaMA-3.3-70B (via Groq API)
+- **Backend**: FastAPI, deployed via ngrok for public access
+- **Architecture**: Multi-agent pipeline (query understanding → context resolution → SQL generation → self-healing/debugging → execution → plot planning → KPI recommendation)
+
+## Data
+
+This project was built using a proprietary dataset provided by the competition organizers as part of the problem statement. The dataset is not included in this repository and cannot be shared publicly due to confidentiality restrictions. The sample outputs in `outputs/` demonstrate the chatbot's functionality using that data.
