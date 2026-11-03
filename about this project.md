@@ -18,6 +18,7 @@ Built as a 12-stage multi-agent pipeline powered by LLaMA-3.3-70B, deployed via 
 ## Example Interactions
 
 **Q: "What is the total upload count for each channel?"**
+
 > The total upload count for each channel is shown in the bar chart, with Channel A having the highest upload count of 1470.0 and Channel R having the lowest upload count of 3.0. The chart provides a visual representation of the total upload count for each of the 18 channels, allowing for easy comparison of upload activity across channels.
 
 The assistant also proactively suggests relevant follow-up questions after each answer (see `outputs/` for full screenshots).
